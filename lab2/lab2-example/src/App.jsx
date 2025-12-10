@@ -4,20 +4,11 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import SimpleClassComponent from './components/SimpleClassComp.jsx'
 import SimpleFunctionalComponent from './components/SimpleFunctionalComp.jsx'
-
-const Student = {
-  id: 1,
-  name: "John"
-}
-
-const Teacher = {
-  id2: 101,
-  name2: "Dr. Smith"
-}
+import { Student, Teacher } from './components/helper.js'
 
 function App() {
   const [count, setCount] = useState(0)
-
+  
   return (
     <>
       {/* <div>
