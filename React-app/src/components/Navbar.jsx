@@ -12,6 +12,8 @@ function Navbar() {
             <Link to = "/hooks">Hooks</Link>
             {" | "}
             <Link to = "/theme">Theme</Link>
+            {" | "}
+            <Link to = "/users">Users</Link>
         </nav>
     );
 }

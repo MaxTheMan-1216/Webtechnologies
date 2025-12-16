@@ -8,6 +8,7 @@ import Navbar from './components/Navbar.jsx';
 import HooksContainer from './components/HooksContainer.jsx';
 import ThemeComponent from './components/ThemeComponent.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
+import UsersPage from './components/hooks/UsersPage.jsx';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/functional" element = {<SimpleFunctionalComponent student={Student} teacher={Teacher} />} />
             <Route path="/hooks" element = {<HooksContainer />} /> 
             <Route path="/theme" element = {<ThemeComponent />} />
+            <Route path="/users" element = {<UsersPage/>} />
           </Routes>
 
         </BrowserRouter>
