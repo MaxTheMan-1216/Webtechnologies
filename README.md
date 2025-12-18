@@ -25,7 +25,7 @@ This project is primarily **educational** and focuses on:
 - connecting a React frontend to a Django backend
 - applying good project structure and development practices
 
-The project is developed iteratively, with an emphasis on learning and understanding each step of the implementation.
+The project is was originally started on my school account, but I decided to import the still **work in progress** code to my main account.
 
 ---
 
