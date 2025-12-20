@@ -17,6 +17,8 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .serializers import UserSerializer
+from .models import Item
+from .serializers import ItemSerializer
 
 
 def students(request):
@@ -85,6 +87,11 @@ def list_users(request):
     response.data['page_size'] = paginator.get_page_size(request)
     return response
 
+@api_view(['GET'])
+def list_items(request):
+    items = Item.objects.filter(status=Item.Status.ON_SALE)
+    serializer = ItemSerializer(items, many=True)
+    return Response(serializer.data)
 
 @api_view(['GET'])
 @authentication_classes([JWTAuthentication])
