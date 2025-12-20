@@ -14,6 +14,8 @@ function Navbar() {
             <Link to = "/theme">Theme</Link>
             {" | "}
             <Link to = "/users">Users</Link>
+            {" | "}
+            <Link to = "/shop">Shop</Link>
         </nav>
     );
 }

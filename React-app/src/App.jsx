@@ -9,6 +9,7 @@ import HooksContainer from './components/HooksContainer.jsx';
 import ThemeComponent from './components/ThemeComponent.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
 import UsersPage from './components/hooks/UsersPage.jsx';
+import Shop from './components/Shop.jsx';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/hooks" element = {<HooksContainer />} /> 
             <Route path="/theme" element = {<ThemeComponent />} />
             <Route path="/users" element = {<UsersPage/>} />
+            <Route path="/shop" element = {<Shop/>} />
           </Routes>
 
         </BrowserRouter>
