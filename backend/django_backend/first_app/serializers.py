@@ -9,8 +9,8 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'date_joined']
 
 class ItemSerializer(serializers.ModelSerializer):
-    seller = serializers.CharField(source='seller.username')
-    image = serializers.ImageField(use_url=True)
+    seller = serializers.ReadOnlyField(source='seller.username')
+    image = serializers.ImageField(use_url=True, required=False)
 
     class Meta:
         model = Item
