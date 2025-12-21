@@ -37,6 +37,15 @@ function Shop() {
             <div className="shop-grid">
                 {items.map((item) => (
                     <div className="shop-card" key={item.id}>
+                        <div className="popular-image">
+                            {item.image && (
+                                <img
+                                src={`http://127.0.0.1:8000${item.image}`}
+                                alt={item.name}
+                                />
+                            )}
+                        </div>
+                        
                         <div>
                             <h3>{item.name}</h3>
                             <p className="shop-description">{item.description}</p>

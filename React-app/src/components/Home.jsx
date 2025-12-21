@@ -21,7 +21,7 @@ function Home() {
         <div className="home">
             {/* HERO */}
             <section className="hero">
-                <div className="hero-content">
+                <div className="container hero-content">
                     <h1>
                         Welcome to the Åbo <br /> Akademi University <br /> web shop!
                     </h1>
@@ -39,18 +39,22 @@ function Home() {
 
             {/* MOST POPULAR */}
             <section className="popular">
-                <div className="popular-container">
+                <div className="container popular-container">
                     <p className="popular-subtitle"> EXPLORE AWESOME PRODUCTS</p>
                     <h2 className="popular-title">MOST POPULAR</h2>
 
                     <div className="popular-grid">
                         {items.map((item) => (
                             <div className="popular-card" key={item.id}>
-                                <div className="popular-image">
-                                    {/* Placeholder image */}
+                                <div className="promo-image">
+                                    {item.image && (
+                                        <img
+                                        src={`http://127.0.0.1:8000${item.image}`}
+                                        alt={item.name}
+                                        />
+                                    )}
                                 </div>
-
-                                <p className="popular-name">{}item.name</p>
+                                <p className="popular-name">{item.name}</p>
                                 <span className="popular-price">€{item.price}</span>
                             </div>
                         ))}
@@ -59,6 +63,14 @@ function Home() {
                     <Link to="/shop" className="popular-button">
                     Explore Other Products
                     </Link>
+                </div>
+            </section>
+
+            {/* PR BANNER */}
+            <section className="promo promo-yellow">
+                <div className="container promo-content">
+                    <h2>Spread ÅA-love with our PR-products!</h2>
+                    <a href="/shop" className="promo-button">PR-products</a>
                 </div>
             </section>
         </div>

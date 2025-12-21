@@ -1,17 +1,39 @@
 /* HERO SECTION */
 
 .home {
-    width: 100;
+    width: 100%;
 }
 
 .hero {
-    background-color: #3aa6b1;
-    padding: 5rem 1rem;
+    position: relative;
+    background-color: var(--aa-teal);
+    padding: 6rem 0rem;
+    margin-top: 0;
+    overflow: hidden;
 }
 
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("/src/assets/hero-bg.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 1500px;
+
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
+}
 .hero-content {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .hero h1 {
@@ -41,7 +63,7 @@
 }
 
 .btn-primary:hover {
-    background-color: #222;
+    background-color: #e0001a;
 }
 
 .btn-secondary {
@@ -50,7 +72,7 @@
 }
 
 .btn-secondary:hover {
-    background-color: #f0f0f0;
+    background-color: #e0001a;
 }
 
 /* MOST POPULAR SECTION */
@@ -61,7 +83,6 @@
 }
 
 .popular-container {
-    max-width: 1100px;
     margin: 0 auto;
     text-align: center;
 }
@@ -81,14 +102,13 @@
 
 .popular-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.8rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
 }
 
 .popular-card {
     background-color: #f7f7f7;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 1.2rem;
 }
 
@@ -125,5 +145,68 @@
 }
 
 .popular-button:hover {
-    background-color: #c80018;
+    background-color: black;
 }
+
+/* PROMO BANNER */
+
+.promo {
+    position: relative;
+    padding: 4rem 0rem;
+    background-color: var(--aa-yellow);
+}
+
+.promo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("/src/assets/pr-bg.jpg");
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0.25;
+}
+
+.promo > * {
+    position: relative;
+    z-index: 1;
+}
+.promo-yellow {
+    background-color: #e3c21a;
+}
+
+.promo-content {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.promo h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.promo-button {
+    background-color: white;
+    padding: 0.7rem 1.6rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #000;
+}
+
+.promo-button:hover {
+    background-color: #e0001a;
+}
+
+.promo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+
+}
+
+/* BOOKS BANNER */

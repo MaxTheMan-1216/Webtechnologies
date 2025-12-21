@@ -4,7 +4,9 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import UsersPage from './components/hooks/UsersPage.jsx';
 import Shop from './components/Shop.jsx';
-import Home from "./components/Home.jsx"
+import Home from "./components/Home.jsx";
+import Footer from "./components/Footer.jsx";
+import Header from "./components/Header.jsx";
 
 
 function App() {
@@ -14,11 +16,13 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
+        <Header />
         <Routes>
           <Route path="/" element = {<Home/>} />
           <Route path="/shop" element = {<Shop/>} />
           <Route path="/users" element = {<UsersPage/>} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   )
