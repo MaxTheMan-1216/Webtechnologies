@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./Shop.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api";
 
@@ -28,35 +29,30 @@ function Shop() {
     if (error) return <p>{error}</p>;
 
     return (
-        <div>
-            <h1>Shop</h1>
+        <div className="shop-container"> 
+            <h1 className="shop-title">Shop</h1>
 
-            {items.length === 0 && <p>No items for sale</p>}
+            {items.length === 0 && (<p className="shop-empty">No items for sale</p>)}
 
-            <ul style={{listStyle: "none", padding: 0}}>
-                {items.map((item) =>(
-                    <li
-                    key={item.id}
-                    style={{
-                        border: "1px solid #ccc",
-                        padding: "1rem",
-                        marginBottom: "1rem",
-                    }}
-                    >
-                        <h3>{item.name}</h3>
-                        <p>{item.description}</p>
-                        <p>
-                            <strong>Price:</strong> €{item.price}
-                        </p>
-                        <p>
-                            <strong>Seller:</strong> {item.seller}
-                        </p>
-                        <small>
-                            Added: {new Date(item.created_at).toLocaleString()}
-                        </small>
-                    </li>
+            <div className="shop-grid">
+                {items.map((item) => (
+                    <div className="shop-card" key={item.id}>
+                        <div>
+                            <h3>{item.name}</h3>
+                            <p className="shop-description">{item.description}</p>
+                        </div>
+
+                        <div>
+                            <p className="shop-price">€{item.price}</p>
+                            <p className="shop-meta">
+                                Seller: {item.seller}
+                                <br />
+                                Added: {new Date(item.created_at).toLocaleDateString()}
+                            </p>
+                        </div>
+                    </div>
                 ))}
-            </ul>
+            </div>  
         </div>
     );
 }
