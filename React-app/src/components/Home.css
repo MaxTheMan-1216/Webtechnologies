@@ -1,0 +1,212 @@
+/* HERO SECTION */
+
+.home {
+    width: 100%;
+}
+
+.hero {
+    position: relative;
+    background-color: var(--aa-teal);
+    padding: 6rem 0rem;
+    margin-top: 0;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("/src/assets/hero-bg.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 1500px;
+
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
+}
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.hero h1 {
+    color: white;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #e0001a;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    color: #000;
+}
+
+.btn-secondary:hover {
+    background-color: #e0001a;
+}
+
+/* MOST POPULAR SECTION */
+
+.popular {
+    padding: 4rem 1rem;
+    background-color: #ffffff;
+}
+
+.popular-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.popular-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: #777;
+    margin-bottom: 0.3rem;
+}
+
+.popular-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+}
+
+.popular-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+}
+
+.popular-card {
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    padding: 1.2rem;
+}
+
+.popular-image {
+    height: 140px;
+    background-color: #eaeaea;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.popular-name {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.popular-price {
+    display: inline-block;
+    background-color: #e8f3f5;
+    color: #1f7a85;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.popular-button {
+    display: inline-block;
+    background-color: #e0001a;
+    color: white;
+    padding: 0.7rem 1.6rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.popular-button:hover {
+    background-color: black;
+}
+
+/* PROMO BANNER */
+
+.promo {
+    position: relative;
+    padding: 4rem 0rem;
+    background-color: var(--aa-yellow);
+}
+
+.promo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("/src/assets/pr-bg.jpg");
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0.25;
+}
+
+.promo > * {
+    position: relative;
+    z-index: 1;
+}
+.promo-yellow {
+    background-color: #e3c21a;
+}
+
+.promo-content {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.promo h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.promo-button {
+    background-color: white;
+    padding: 0.7rem 1.6rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #000;
+}
+
+.promo-button:hover {
+    background-color: #e0001a;
+}
+
+.promo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+
+}
+
+/* BOOKS BANNER */

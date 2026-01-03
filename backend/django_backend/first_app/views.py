@@ -17,6 +17,8 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .serializers import UserSerializer
+from .models import Item
+from .serializers import ItemSerializer
 
 
 def students(request):
@@ -85,6 +87,25 @@ def list_users(request):
     response.data['page_size'] = paginator.get_page_size(request)
     return response
 
+@api_view(['GET', 'POST'])
+def items_view(request):
+    if request.method == 'GET':
+        items = Item.objects.filter(status=Item.Status.ON_SALE)
+        serializer = ItemSerializer(items, many=True)
+        return Response(serializer.data)
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return Response(
+                {"detail": "Authentication required"},
+                status=401
+            )
+        
+        serializer = ItemSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(seller=request.user)
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
+    
 
 @api_view(['GET'])
 @authentication_classes([JWTAuthentication])
@@ -96,3 +117,21 @@ def user_detail(request):
 
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
+
+@api_view(['DELETE'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def delete_item(request, item_id):
+    try:
+        item = Item.objects.get(id=item_id)
+    except Item.DoesNotExist:
+        return Response({"detail": "Not Found"}, status=404)
+    
+    if item.seller != request.user:
+        return Response (
+            {"detail": "Not Allowed"},
+            status=403
+        )
+    
+    item.delete()
+    return Response(status=204)

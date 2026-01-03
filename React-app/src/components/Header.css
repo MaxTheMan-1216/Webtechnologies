@@ -1,0 +1,96 @@
+.header {
+    width: 100%;
+    background: white;
+}
+
+/* TOP ROW */
+.header-top {
+    border-bottom: 1px solid #eee;
+}
+
+.header-top-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-left img {
+    height: 36px;
+}
+
+.shop-title {
+    font-size: 0.9rem;
+    color: #1f7a85;
+}
+
+.header-search {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.header-search input {
+    border: none;
+    padding: 0.6rem 1rem;
+    width: 260px;
+    outline: none;
+}
+
+.header-search button {
+    background: white;
+    border: none;
+    padding: 0 1rem;
+    cursor: pointer;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* BOTTOM ROW */
+.header-nav {
+    border-bottom: 1px solid #eee;
+}
+
+.header-nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.8rem 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+}
+
+.nav-links a {
+    cursor: pointer;
+}
+
+.categories-btn {
+    background: white;
+    border: 1px solid #999;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}

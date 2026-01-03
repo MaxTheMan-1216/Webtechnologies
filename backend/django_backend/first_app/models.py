@@ -31,6 +31,7 @@ class Student(models.Model):
         super().save(*args, **kwargs)
 
 class Item(models.Model):
+    image = models.ImageField(upload_to="items/", blank=True, null=True)
     class Status(models.TextChoices):
         ON_SALE = 'ON_SALE', 'on sale'
         SOLD = 'SOLD', 'Sold'
