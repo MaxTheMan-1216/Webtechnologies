@@ -26,7 +26,6 @@ function App() {
             <Route path="/theme" element = {<ThemeComponent />} />
             <Route path="/users" element = {<UsersPage/>} />
           </Routes>
-
         </BrowserRouter>
       </ThemeProvider>
     
