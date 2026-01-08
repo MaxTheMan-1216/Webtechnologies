@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.shortcuts import render, redirect
 from .forms import UserRegistrationForm, UserLoginForm
 from .models import Student
@@ -19,6 +20,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from .serializers import UserSerializer
 from .models import Item
 from .serializers import ItemSerializer
+from django.views.decorators.csrf import csrf_protect
 
 
 def students(request):
@@ -135,3 +137,37 @@ def delete_item(request, item_id):
     
     item.delete()
     return Response(status=204)
+
+@csrf_protect
+def populate_db(request):
+    if request.method == 'POST':
+        Item.objects.all().delete()
+        User.objects.exclude(is_superuser=True).delete()
+
+        users = []
+
+        for i in range(1, 7):
+            user = User.objects.create_user(
+                username=f'testuser{i}',
+                password='pass{i}',
+                email=f"testuser{i}@shop.aa"
+            )
+            users.append(user)
+
+        for seller in users[:3]:
+            for j in range (1, 11):
+                Item.objects.create(
+                    name=f"Item {j} by {seller.username}",
+                    description="Automatically generated item.",
+                    price=Decimal("10.0") * j,
+                    status=Item.Status.ON_SALE,
+                    seller=seller
+                )
+        
+        return render(
+            request,
+            "landing.html",
+            {"message": "Database populated successfully!"}
+        )
+    
+    return render(request, "landing.html")

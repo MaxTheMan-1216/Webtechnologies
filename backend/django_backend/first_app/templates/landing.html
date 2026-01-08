@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Landing Page</title>
+</head>
+<body>
+    <h1>Welcome to the Landing Page</h1>
+
+    <form method="post" action="/api/populate/">
+        {% csrf_token %}
+        <button type="submit">Populate database</button>
+    </form>
+
+    {% if message %}
+        <p style="color: green;"><strong>{{ message }}</strong></p>
+    {% endif %}
+</body>
+</html>
