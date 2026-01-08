@@ -6,6 +6,7 @@ import Shop from './components/Shop.jsx';
 import Home from "./components/Home.jsx";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
+import MyAccount from './components/MyAccount.jsx';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/users' element={<UsersPage />} />
           <Route path='/shop' element={<Shop />} />
+          <Route path='/login' element={<MyAccount />} />
         </Routes>
         <Footer />
        </BrowserRouter>

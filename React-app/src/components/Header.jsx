@@ -1,4 +1,5 @@
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 function Header() {
     return(
@@ -8,8 +9,10 @@ function Header() {
                 <div className="header-top-inner">
 
                     <div className="header-left">
-                        <img src="/src/assets/Åa_logo.svg" alt="Åbo Akademi" />
-                        <span className="shop-title">Åbo Akademi University Web Shop</span>
+                        <Link to="/" style={{ display: "flex", alignItems: "center", gap: "1rem", textDecoration: "none" }}>
+                            <img src="/src/assets/Åa_logo.svg" alt="Åbo Akademi" />
+                            <span className="shop-title">Åbo Akademi University Web Shop</span>
+                        </Link>
                     </div>
 
                     <div className="header-search">
@@ -18,7 +21,9 @@ function Header() {
                     </div>
 
                     <div className="header-icons">
-                        <span>👤</span>
+                        <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <span>👤</span>
+                        </Link>
                         <span>🛒</span>
                         <span>🌐 English</span>
                     </div>

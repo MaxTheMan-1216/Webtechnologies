@@ -1,0 +1,49 @@
+.account-container {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
+.account-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.account-grid h2 {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.85rem;
+    margin-top: 1rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    border: 1px solid #ccc;
+}
+
+.button-read {
+    background-color: #e0001a;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 1.5rem;
+}
+
+.remember {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    color: #555;
+}
+
+.link {
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-top: 0.8rem;
+}

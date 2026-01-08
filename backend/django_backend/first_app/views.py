@@ -171,3 +171,32 @@ def populate_db(request):
         )
     
     return render(request, "landing.html")
+
+@api_view(['POST'])
+def signup(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    email = request.data.get('email')
+
+    if not username or not password or not email:
+        return Response(
+            {"detail": "Username, password, and email are required."},
+            status=400
+        )
+    
+    if User.objects.filter(username=username).exists():
+        return Response(
+            {"detail": "Username already exists."},
+            status=400
+        )
+    
+    user = User.objects.create_user(
+        username=username,
+        password=password,
+        email=email
+    )
+
+    return Response(
+        {"detail": "User created successfully."},
+        status=201
+    )
