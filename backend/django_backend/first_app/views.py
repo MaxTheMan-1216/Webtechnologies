@@ -21,7 +21,8 @@ from .serializers import UserSerializer
 from .models import Item
 from .serializers import ItemSerializer
 from django.views.decorators.csrf import csrf_protect
-
+from .models import CartItem
+from .serializers import CartItemSerializer
 
 def students(request):
     students = [
@@ -200,3 +201,54 @@ def signup(request):
         {"detail": "User created successfully."},
         status=201
     )
+
+@api_view(['POST'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def add_to_cart(request, item_id):
+    try: 
+        item = Item.objects.get(id=item_id, status=Item.Status.ON_SALE)
+    except Item.DoesNotExist:
+        return Response({"detail": "Item not found or not available"}, status=404)
+    
+    if item.seller == request.user:
+        return Response(
+            {"detail": "Cannot add your own item to the cart."},
+            status=400
+        )
+    
+    cart_item, created = CartItem.objects.get_or_create(
+        buyer=request.user,
+        item=item
+    )
+
+    if not created:
+        return Response(
+            {"detail": "Item already in cart."},
+            status=400
+        )
+    
+    return Response(
+        {"detail": "Item added to cart successfully."},
+        status=201
+    )
+
+@api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def view_cart(request):
+    cart_items = CartItem.objects.filter(buyer=request.user)
+    serializer = CartItemSerializer(cart_items, many=True)
+    return Response(serializer.data)
+
+@api_view(['DELETE'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def remove_from_cart(request, cart_item_id):
+    try:
+        cart_item = CartItem.objects.get(id=cart_item_id, buyer=request.user)
+    except CartItem.DoesNotExist:
+        return Response({"detail": "Cart item not found"}, status=404)
+    
+    cart_item.delete()
+    return Response(status=204)

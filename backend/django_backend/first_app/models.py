@@ -57,3 +57,21 @@ class Item(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.status})"
+    
+class CartItem(models.Model):
+    buyer = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE, 
+        related_name='cart_items'
+    )
+    item = models.ForeignKey(
+        Item, 
+        on_delete=models.CASCADE, 
+    )
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('buyer', 'item')
+
+    def __str__(self):
+        return f"{self.buyer.username} -> {self.item.name}"

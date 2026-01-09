@@ -29,8 +29,13 @@
 }
 
 .shop-title {
-    font-size: 0.9rem;
+    font-size: 14px;
     color: #1f7a85;
+    vertical-align: bottom;
+    line-height: 17px;
+    padding-left: 30px;
+
+
 }
 
 .header-search {

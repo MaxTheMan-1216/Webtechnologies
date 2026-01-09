@@ -28,6 +28,24 @@ function Shop() {
     if (loading) return <p>Loading shop items...</p>;
     if (error) return <p>{error}</p>;
 
+    const addToCart = async (itemId) => {
+        const token = localStorage.getItem("access");
+        if (!token) {
+            alert("Please log in to add items to your cart.");
+            return;
+        }
+
+        const response = await fetch(`${API_BASE_URL}/cart/add/${itemId}/`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        const data = await response.json();
+        alert(data.detail || "Added");
+    };
+
     return (
         <div className="shop-container"> 
             <h1 className="shop-title">Shop</h1>
@@ -53,6 +71,9 @@ function Shop() {
 
                         <div>
                             <p className="shop-price">€{item.price}</p>
+                            <button onClick={() => addToCart(item.id)}>
+                                Add to Cart
+                            </button>
                             <p className="shop-meta">
                                 Seller: {item.seller}
                                 <br />

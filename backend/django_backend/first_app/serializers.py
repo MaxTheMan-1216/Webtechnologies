@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from .models import Item
-
+from .models import CartItem
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,3 +16,9 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = "__all__"
         
+class CartItemSerializer(serializers.ModelSerializer):
+    item = ItemSerializer()
+
+    class Meta:
+        model = CartItem
+        fields = ['id', 'item','added_at']

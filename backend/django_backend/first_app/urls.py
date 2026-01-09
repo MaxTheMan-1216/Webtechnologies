@@ -12,4 +12,7 @@ urlpatterns = [
     path('', populate_db, name='landing'),
     path('populate/', populate_db, name='populate_db'),
     path('signup/', views.signup, name='signup'),
+    path('cart/', views.view_cart),
+    path('cart/add/<int:item_id>/', views.add_to_cart),
+    path('cart/remove/<int:item_id>/', views.remove_from_cart),
 ]
