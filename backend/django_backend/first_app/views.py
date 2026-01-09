@@ -23,6 +23,7 @@ from .serializers import ItemSerializer
 from django.views.decorators.csrf import csrf_protect
 from .models import CartItem
 from .serializers import CartItemSerializer
+from rest_framework.permissions import IsAuthenticated
 
 def students(request):
     students = [
@@ -252,3 +253,20 @@ def remove_from_cart(request, cart_item_id):
     
     cart_item.delete()
     return Response(status=204)
+
+@api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([permissions.IsAuthenticated])
+def my_items(request):
+    user = request.user
+
+    on_sale = Item.objects.filter(seller=user, status=Item.Status.ON_SALE)
+    sold = Item.objects.filter(seller=user, status=Item.Status.SOLD)
+
+    purchased = Item.objects.filter(buyer=user)
+
+    return Response({
+        "on_sale": ItemSerializer(on_sale, many=True).data,
+        "sold": ItemSerializer(sold, many=True).data,
+        "purchased": ItemSerializer(purchased, many=True).data,
+    })

@@ -46,6 +46,14 @@ class Item(models.Model):
         related_name='items_selling'
     )
 
+    buyer = models.ForeignKey(
+        User, 
+        on_delete=models.SET_NULL, 
+        related_name='items_bought',
+        null=True,
+        blank=True
+    )
+
     status = models.CharField(
         max_length=10,
         choices=Status.choices,

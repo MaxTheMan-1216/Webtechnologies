@@ -27,7 +27,11 @@ function Header() {
                         <Link to="/cart" style={{ textDecoration: 'none', color: 'inherit' }}>
                             <span>🛒</span>
                         </Link>
+                        <Link to="/my-items">
+                            <span>📦</span>
+                        </Link>
                         <span>🌐 English</span>
+
                     </div>
                 </div>
             </div>
